@@ -13,7 +13,7 @@ function init()
 {
   build_cube();
 
-  var e = $("#controller");
+  var e = $(document);
   e.mousewheel(moveWheel);
   e.mousedown(startDrag);
   e.mousemove(moveDrag);

@@ -1,0 +1,116 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#controller {
+  position: absolute;
+  z-index: 100;
+  width: 640px;
+  height: 640px;
+  top: 0px;
+  left: 0px;
+  -webkit-transform: translateZ(2000px);
+  -moz-transform: translateZ(2000px);
+}
+
+.container {
+  width: 640px;
+  height: 640px;
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.cube {
+  width: 640px;
+  height: 640px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+}
+
+#container img {
+  display: block;
+}
+
+
+.side {
+  position: absolute;
+  left: 64px;
+  top: 64px;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+#side1 {
+  -webkit-transform: translateZ(-255px);
+  -moz-transform: translateZ(-255px);
+}
+
+#side2 {
+  -webkit-transform: rotateY(-90deg) translateZ(-255px);
+  -moz-transform: rotateY(-90deg) translateZ(-255px);
+}
+
+#side3 {
+  -webkit-transform: rotateY(180deg) translateZ(-255px);
+  -moz-transform: rotateY(180deg) translateZ(-255px);
+}
+
+#side4 {
+  -webkit-transform: rotateY(90deg) translateZ(-255px);
+  -moz-transform: rotateY(90deg) translateZ(-255px);
+}
+
+#side5 {
+  -webkit-transform: rotateX(-90deg) translateZ(-255px);
+  -moz-transform: rotateX(-90deg) translateZ(-255px);
+}
+
+#side6 {
+  -webkit-transform: rotateX(90deg) translateZ(-255px);
+  -moz-transform: rotateX(90deg) translateZ(-255px);
+}
+
+.infowindow {
+  position: absolute;
+  z-index: 10;
+  background: white;
+  color: black;
+  text-align: center;
+  font: bold 16px Helvetica;
+  padding: 20px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  opacity: 0.7;
+  -webkit-transform: translateZ(1000px);
+  -moz-transform: translateZ(1000px);
+}
+
+#loading {
+  width: 400px;
+  top: 160px;
+  left: 80px;
+  background: black;
+  color: white;
+  font: bold 24px Helvetica;
+}
+
+#usage {
+  width: 150px;
+  top: 20px;
+  left: 430px;
+  text-align: right;
+}
+
+
+#info {
+  width: 580px;
+  top: 540px;
+  left: 10px;
+}
+
+#texture {
+  display: none;
+}

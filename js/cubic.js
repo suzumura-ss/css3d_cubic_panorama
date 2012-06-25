@@ -83,12 +83,12 @@ function moveWheel(e, d)
 
 function doRotate(lastX, lastY, curX, curY, wheelDelta)
 {
-  rotY -= Math.floor((curX - lastX) * 0.25);
-  rotX += Math.floor((curY - lastY) * 0.25);
+  rotY -= (curX - lastX) * 0.25;
+  rotX += (curY - lastY) * 0.25;
   rotX = Math.max(-88, Math.min(88, rotX));
   camZ += wheelDelta;
 
-  var r = "translateZ(" + Math.floor(camZ) + "px) rotateX(" + rotX + "deg) rotateY(" + rotY + "deg)";
+  var r = "translateZ(" + Math.floor(camZ) + "px) rotateX(" + Math.floor(rotX) + "deg) rotateY(" + Math.floor(rotY) + "deg)";
   var s = "#container{-" + pfx + "-perspective:" + Math.floor(camZ) +"px;}"
         + "     #cube{-" + pfx + "-transform:" + r + ";}";
   $("#info").text(s);

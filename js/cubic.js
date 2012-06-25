@@ -91,7 +91,6 @@ function doRotate(lastX, lastY, curX, curY, wheelDelta)
   var r = "translateZ(" + Math.floor(camZ) + "px) rotateX(" + Math.floor(rotX) + "deg) rotateY(" + Math.floor(rotY) + "deg)";
   var s = "#container{-" + pfx + "-perspective:" + Math.floor(camZ) +"px;}"
         + "     #cube{-" + pfx + "-transform:" + r + ";}";
-  $("#info").text(s);
   $("#camera").text(s);
 }
 

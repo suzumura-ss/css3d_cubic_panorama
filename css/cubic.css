@@ -97,22 +97,6 @@ body {
   font: bold 24px Helvetica;
 }
 
-#usage {
-  display: none;
-  width: 150px;
-  top: 20px;
-  left: 430px;
-  text-align: right;
-}
-
-
-#info {
-  display: none;
-  width: 580px;
-  top: 540px;
-  left: 10px;
-}
-
 #texture {
   display: none;
 }

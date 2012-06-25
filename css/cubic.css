@@ -6,8 +6,8 @@ body {
 #controller {
   position: absolute;
   z-index: 100;
-  width: 640px;
-  height: 640px;
+  width: 500px;
+  height: 380px;
   top: 0px;
   left: 0px;
   -webkit-transform: translateZ(2000px);
@@ -15,8 +15,8 @@ body {
 }
 
 .container {
-  width: 640px;
-  height: 640px;
+  width: 500px;
+  height: 380px;
   overflow: hidden;
   position: absolute;
   top: 0px;
@@ -24,8 +24,8 @@ body {
 }
 
 .cube {
-  width: 640px;
-  height: 640px;
+  width: 500px;
+  height: 380px;
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
 }
@@ -37,8 +37,8 @@ body {
 
 .side {
   position: absolute;
-  left: 64px;
-  top: 64px;
+  left: -6px; /* = (500-512)/2 */
+  top: -66px; /* = (380-512)/2 */
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
 }
@@ -90,14 +90,15 @@ body {
 
 #loading {
   width: 400px;
-  top: 160px;
-  left: 80px;
+  top: 140px;
+  left: 50px;
   background: black;
   color: white;
   font: bold 24px Helvetica;
 }
 
 #usage {
+  display: none;
   width: 150px;
   top: 20px;
   left: 430px;
@@ -106,6 +107,7 @@ body {
 
 
 #info {
+  display: none;
   width: 580px;
   top: 540px;
   left: 10px;

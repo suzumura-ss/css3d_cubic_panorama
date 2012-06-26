@@ -43,32 +43,32 @@ body {
   -moz-backface-visibility: hidden;
 }
 
-#side1 {
+#side0 {
   -webkit-transform: translateZ(-255px);
   -moz-transform: translateZ(-255px);
 }
 
-#side2 {
+#side1 {
   -webkit-transform: rotateY(-90deg) translateZ(-255px);
   -moz-transform: rotateY(-90deg) translateZ(-255px);
 }
 
-#side3 {
+#side2 {
   -webkit-transform: rotateY(180deg) translateZ(-255px);
   -moz-transform: rotateY(180deg) translateZ(-255px);
 }
 
-#side4 {
+#side3 {
   -webkit-transform: rotateY(90deg) translateZ(-255px);
   -moz-transform: rotateY(90deg) translateZ(-255px);
 }
 
-#side5 {
+#side4 {
   -webkit-transform: rotateX(-90deg) translateZ(-255px);
   -moz-transform: rotateX(-90deg) translateZ(-255px);
 }
 
-#side6 {
+#side5 {
   -webkit-transform: rotateX(90deg) translateZ(-255px);
   -moz-transform: rotateX(90deg) translateZ(-255px);
 }

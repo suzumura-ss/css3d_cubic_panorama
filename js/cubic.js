@@ -8,6 +8,7 @@ var active = 0;
 var lastX;
 var lastY;
 var lastZ;
+var mediaController;
 
 function init()
 {
@@ -20,49 +21,86 @@ function init()
   e.mouseup(endDrag);
   e.mouseout(endDrag);
 
-  var l = $("#loading");
   if((pfx = checksupport())) {
-    l.remove();
+    if(mediaController) {
+      playVideo();
+    } else {
+      $("#loading").remove();
+    }
     doRotate(0, 0, 0, 0, 0);
   } else {
-    l.text("CSS/3D is not supported.");
+    $("#loading").text("CSS/3D is not supported.");
   }
+}
+
+function playVideo()
+{
+  var v = $("#cube").children(), i;
+  for(i=0; i<v.length; i++) {
+    var t = v[i];
+    if(t.readyState!=t.HAVE_ENOUGH_DATA) {
+      setTimeout(playVideo, 1000);
+      return;
+    }
+  }
+  for(i=0; i<v.length; i++) {
+    v[i].muted = (i==0)? false: true;
+    v[i].play();
+  }
+  $("#loading").remove();
 }
 
 function build_cube()
 {
   $("#container").append('<div id="cube" class="cube"></div>');
   var src = $("#texture");
-  if(src[0].tagName.toLowerCase()=="img") {
+  var tag = src[0].tagName.toLowerCase();
+  if((tag=="img") || (tag=="video")) {
     // packed
-    copyImage("side1", 0, 0);
-    copyImage("side2", 1, 0);
-    copyImage("side3", 2, 0);
-    copyImage("side4", 0, 1);
-    copyImage("side5", 1, 1);
-    copyImage("side6", 2, 1);
+    for(var i=0; i<6; i++) {
+      $("#cube").append('<canvas id="side' + i + '" class="side" width="511px" height="511px"></canvas>');
+    }
+    transferImage(tag=="video");
   } else {
     // separated
-    for(var i=1; i<=6; i++) {
+    var v = src.children()[0];
+    if(v.tagName.toLowerCase()=="video") {
+      try {
+        mediaController = new MediaController();
+      } catch(e) {
+        console.log("MediaController() is not supported.");
+      }
+    }
+    for(var i=0; i<6; i++) {
       var t = src.children()[0];
       t.id = "side" + i;
       t.className = "side";
       t.style.width = "511px";
       t.style.height = "511px";
+      if(mediaController) {
+        t.controller = mediaController;
+        t.loop = true;
+      }
       $("#cube").append(t);
     }
   }
 }
 
-function copyImage(dst, x, y)
+function transferImage(loop)
 {
-  $("#cube").append('<canvas id="' + dst + '" class="side" width="511px" height="511px"></canvas>');
-  dst = $("#"+dst);
-  var ctx = dst[0].getContext("2d");
+  var x = [0, 1, 2, 0, 1, 2];
+  var y = [0, 0, 0, 1, 1, 1];
   var src = $("#texture");
   var w = src.width()/3.0;
   var h = src.height()/2.0;
-  ctx.drawImage(src[0], x*w, y*h, w, h, 0, 0, dst.width(), dst.height());
+  for(var i=0; i<6; i++) {
+    var dst = $("#side" + i);
+    var ctx = dst[0].getContext("2d");
+    ctx.drawImage(src[0], x[i]*w, y[i]*h, w, h, 0, 0, dst.width(), dst.height());
+  }
+  if(loop) {
+    setTimeout("transferImage(true)", 50);
+  }
 }
 
 function startDrag(e)

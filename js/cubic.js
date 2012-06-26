@@ -32,12 +32,26 @@ function init()
 function build_cube()
 {
   $("#container").append('<div id="cube" class="cube"></div>');
-  copyImage("side1", 0, 0);
-  copyImage("side2", 1, 0);
-  copyImage("side3", 2, 0);
-  copyImage("side4", 0, 1);
-  copyImage("side5", 1, 1);
-  copyImage("side6", 2, 1);
+  var src = $("#texture");
+  if(src[0].tagName.toLowerCase()=="img") {
+    // packed
+    copyImage("side1", 0, 0);
+    copyImage("side2", 1, 0);
+    copyImage("side3", 2, 0);
+    copyImage("side4", 0, 1);
+    copyImage("side5", 1, 1);
+    copyImage("side6", 2, 1);
+  } else {
+    // separated
+    for(var i=1; i<=6; i++) {
+      var t = src.children()[0];
+      t.id = "side" + i;
+      t.className = "side";
+      t.style.width = "511px";
+      t.style.height = "511px";
+      $("#cube").append(t);
+    }
+  }
 }
 
 function copyImage(dst, x, y)
